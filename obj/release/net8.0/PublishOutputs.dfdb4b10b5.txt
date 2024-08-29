@@ -1,0 +1,12 @@
+D:\Danillo Lacerda 2DS\RpgApi\publish\RpgApi.exe
+D:\Danillo Lacerda 2DS\RpgApi\publish\appsettings.Development.json
+D:\Danillo Lacerda 2DS\RpgApi\publish\appsettings.json
+D:\Danillo Lacerda 2DS\RpgApi\publish\RpgApi.dll
+D:\Danillo Lacerda 2DS\RpgApi\publish\RpgApi.deps.json
+D:\Danillo Lacerda 2DS\RpgApi\publish\RpgApi.runtimeconfig.json
+D:\Danillo Lacerda 2DS\RpgApi\publish\RpgApi.pdb
+D:\Danillo Lacerda 2DS\RpgApi\publish\Microsoft.AspNetCore.OpenApi.dll
+D:\Danillo Lacerda 2DS\RpgApi\publish\Microsoft.OpenApi.dll
+D:\Danillo Lacerda 2DS\RpgApi\publish\Swashbuckle.AspNetCore.Swagger.dll
+D:\Danillo Lacerda 2DS\RpgApi\publish\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Danillo Lacerda 2DS\RpgApi\publish\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -42,5 +42,37 @@ namespace RpgApi.Controllers
         {
             return Ok(personagens.FirstOrDefault(pe => pe.Id == id));
         }
+
+        [HttpPost]
+        public IActionResult AddPersonagem(Personagem novoPersonagem)
+        {
+            personagens.Add(novoPersonagem);
+            return Ok(personagens);
+        }
+
+        [HttpPut]
+        public IActionResult UpdatePersonagem(Personagem p)
+        {
+            Personagem personagemAlterado = personagens.Find(pers => pers.Id == p.Id);
+            personagemAlterado.Nome = p.Nome;
+            personagemAlterado.PontosVida = p.PontosVida;
+            personagemAlterado.Forca = p.Forca;
+            personagemAlterado.Defesa = p.Defesa;
+            personagemAlterado.Inteligencia = p.Inteligencia;
+            personagemAlterado.Classe = p.Classe;
+
+            return Ok(personagens);
+            
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            personagens.RemoveAll(pers => pers.Id == id);
+
+            return Ok(personagens);
+        }
+
+        
     }
 }
