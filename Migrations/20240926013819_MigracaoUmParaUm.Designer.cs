@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RpgApi.Data;
 
@@ -11,9 +12,11 @@ using RpgApi.Data;
 namespace RpgApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240926013819_MigracaoUmParaUm")]
+    partial class MigracaoUmParaUm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,47 +100,6 @@ namespace RpgApi.Migrations
                             Dano = 32,
                             Nome = "Cajado",
                             PersonagemId = 7
-                        });
-                });
-
-            modelBuilder.Entity("RpgApi.Models.Habilidade", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Dano")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("varchar");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TB_HABILIDADES", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Dano = 39,
-                            Nome = "Adormecer"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Dano = 41,
-                            Nome = "Congelar"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Dano = 37,
-                            Nome = "Hipnotizar"
                         });
                 });
 
@@ -291,68 +253,6 @@ namespace RpgApi.Migrations
                         });
                 });
 
-            modelBuilder.Entity("RpgApi.Models.PersonagemHabilidade", b =>
-                {
-                    b.Property<int>("PersonagemId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("HabilidadeId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PersonagemId", "HabilidadeId");
-
-                    b.HasIndex("HabilidadeId");
-
-                    b.ToTable("TB_PERSONAGENS_HABILIDADES", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            PersonagemId = 1,
-                            HabilidadeId = 1
-                        },
-                        new
-                        {
-                            PersonagemId = 1,
-                            HabilidadeId = 2
-                        },
-                        new
-                        {
-                            PersonagemId = 2,
-                            HabilidadeId = 2
-                        },
-                        new
-                        {
-                            PersonagemId = 3,
-                            HabilidadeId = 2
-                        },
-                        new
-                        {
-                            PersonagemId = 3,
-                            HabilidadeId = 3
-                        },
-                        new
-                        {
-                            PersonagemId = 4,
-                            HabilidadeId = 3
-                        },
-                        new
-                        {
-                            PersonagemId = 5,
-                            HabilidadeId = 1
-                        },
-                        new
-                        {
-                            PersonagemId = 6,
-                            HabilidadeId = 2
-                        },
-                        new
-                        {
-                            PersonagemId = 7,
-                            HabilidadeId = 3
-                        });
-                });
-
             modelBuilder.Entity("RpgApi.Models.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -384,6 +284,7 @@ namespace RpgApi.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Perfil")
+                        .IsRequired()
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(200)
                         .HasColumnType("varchar")
@@ -405,8 +306,8 @@ namespace RpgApi.Migrations
                             Email = "seuEmail@gmail.com",
                             Latitude = -23.520024100000001,
                             Longitude = -46.596497999999997,
-                            PasswordHash = new byte[] { 70, 255, 133, 219, 155, 70, 172, 124, 86, 193, 54, 182, 221, 210, 192, 126, 63, 157, 176, 236, 68, 98, 77, 72, 219, 34, 189, 42, 192, 164, 33, 46, 30, 82, 248, 149, 4, 235, 107, 113, 180, 216, 49, 211, 167, 234, 120, 89, 18, 226, 95, 215, 172, 9, 189, 235, 217, 212, 218, 76, 237, 121, 202, 204 },
-                            PasswordSalt = new byte[] { 223, 36, 205, 54, 113, 43, 118, 240, 245, 179, 232, 11, 176, 123, 59, 6, 176, 66, 63, 209, 111, 83, 51, 126, 18, 31, 150, 211, 217, 122, 175, 84, 165, 105, 61, 124, 148, 10, 176, 17, 161, 99, 33, 138, 186, 183, 122, 76, 189, 89, 233, 204, 142, 254, 244, 76, 187, 142, 213, 90, 149, 198, 32, 42, 43, 153, 32, 156, 113, 176, 57, 129, 209, 22, 243, 211, 103, 88, 86, 198, 90, 148, 75, 187, 237, 125, 126, 180, 134, 41, 204, 191, 134, 203, 0, 247, 30, 180, 127, 48, 3, 230, 131, 142, 183, 214, 46, 229, 204, 149, 85, 14, 124, 94, 114, 243, 200, 175, 128, 74, 139, 113, 235, 44, 127, 228, 56, 46 },
+                            PasswordHash = new byte[] { 58, 197, 193, 91, 12, 21, 164, 172, 244, 223, 102, 21, 80, 254, 236, 190, 81, 193, 44, 201, 238, 21, 197, 116, 171, 210, 73, 11, 157, 153, 142, 198, 118, 150, 112, 125, 184, 136, 110, 40, 71, 5, 103, 198, 126, 60, 115, 241, 195, 135, 195, 188, 41, 23, 193, 66, 254, 23, 55, 21, 162, 97, 9, 26 },
+                            PasswordSalt = new byte[] { 86, 67, 249, 77, 164, 67, 48, 123, 55, 211, 99, 111, 2, 112, 62, 84, 107, 128, 237, 185, 132, 45, 188, 49, 29, 171, 192, 49, 160, 77, 114, 103, 211, 96, 28, 216, 7, 187, 162, 183, 229, 157, 182, 4, 253, 138, 157, 80, 37, 128, 219, 123, 251, 160, 163, 255, 125, 15, 157, 241, 171, 110, 221, 231, 57, 247, 99, 190, 205, 199, 208, 0, 122, 208, 209, 90, 255, 171, 73, 144, 119, 9, 241, 50, 30, 204, 199, 184, 160, 230, 111, 216, 222, 92, 74, 24, 109, 173, 252, 46, 50, 190, 85, 242, 138, 118, 248, 70, 2, 233, 142, 221, 178, 251, 17, 170, 77, 137, 208, 0, 232, 88, 9, 255, 240, 192, 36, 187 },
                             Perfil = "Admin",
                             Username = "UsuarioAdmin"
                         });
@@ -432,35 +333,9 @@ namespace RpgApi.Migrations
                     b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("RpgApi.Models.PersonagemHabilidade", b =>
-                {
-                    b.HasOne("RpgApi.Models.Habilidade", "Habilidade")
-                        .WithMany("PersonagemHabilidades")
-                        .HasForeignKey("HabilidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RpgApi.Models.Personagem", "Personagem")
-                        .WithMany("PersonagemHabilidades")
-                        .HasForeignKey("PersonagemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Habilidade");
-
-                    b.Navigation("Personagem");
-                });
-
-            modelBuilder.Entity("RpgApi.Models.Habilidade", b =>
-                {
-                    b.Navigation("PersonagemHabilidades");
-                });
-
             modelBuilder.Entity("RpgApi.Models.Personagem", b =>
                 {
                     b.Navigation("Arma");
-
-                    b.Navigation("PersonagemHabilidades");
                 });
 
             modelBuilder.Entity("RpgApi.Models.Usuario", b =>
